@@ -1,36 +1,18 @@
+import { BN } from '@project-serum/anchor';
+import { PublicKey } from '@solana/web3.js';
 import {
-  AnchorProvider,
-  BN,
-  Program,
-  Wallet,
-  web3
-} from '@project-serum/anchor';
-import { Connection, Keypair, PublicKey, clusterApiUrl } from '@solana/web3.js';
-import { getContracts, toChainId } from '@wormhole-foundation/sdk';
-import 'dotenv/config';
-import { Chainbills } from './chainbills';
-import idl from './idl.json';
+  PROGRAM_DATA,
+  WH_CHAIN_ID_SOLANA,
+  config,
+  green,
+  owner,
+  program,
+  systemProgram,
+  thisProgram,
+  solanaTokenBridge as tokenBridgeProgram,
+  wormholeProgram
+} from './utils';
 
-if (!process.env.SOLANA_OWNER_KEY) throw 'Set SOLANA_OWNER_KEY in .env';
-
-const green = (input: any) => '\x1b[32m' + input + '\x1b[0m';
-
-const PROGRAM_DATA = 'BTcwUzyqafBYqFFULcNo9uRyo2TEy6U9Rtxv4idvox9D';
-const PROGRAM_ID = '7YWuy7VkB76uJXt8xHaQu8aGWodG7NUaCkmzVFWg94xk';
-const WH_CHAIN = 'Solana';
-const WH_CHAIN_ID_SOLANA = toChainId(WH_CHAIN);
-const WH_NETWORK = 'Testnet';
-
-const ownerWallet = new Wallet(
-  Keypair.fromSecretKey(
-    Uint8Array.from(JSON.parse(process.env.SOLANA_OWNER_KEY))
-  )
-);
-const owner = ownerWallet.publicKey;
-
-const connection = new Connection(clusterApiUrl('devnet'));
-const systemProgram = new PublicKey(web3.SystemProgram.programId);
-const thisProgram = new PublicKey(PROGRAM_ID);
 const thisProgramData = new PublicKey(PROGRAM_DATA);
 const chainStats = PublicKey.findProgramAddressSync(
   [
@@ -43,17 +25,6 @@ const globalStats = PublicKey.findProgramAddressSync(
   [Buffer.from('global')],
   thisProgram
 )[0];
-const config = PublicKey.findProgramAddressSync(
-  [Buffer.from('config')],
-  thisProgram
-)[0];
-
-const { coreBridge, tokenBridge } = getContracts(WH_NETWORK, WH_CHAIN);
-if (!coreBridge) throw 'Got Invalid coreBridge contract from Wormhole';
-if (!tokenBridge) throw 'Got Invalid tokenBridge contract from Wormhole';
-
-const wormholeProgram = new PublicKey(coreBridge);
-const tokenBridgeProgram = new PublicKey(tokenBridge);
 
 const wormholeBridge = PublicKey.findProgramAddressSync(
   [Buffer.from('Bridge')],
@@ -87,12 +58,6 @@ const authoritySigner = PublicKey.findProgramAddressSync(
   [Buffer.from('authority_signer')],
   tokenBridgeProgram
 )[0];
-
-const program = new Program<Chainbills>(
-  idl as Chainbills,
-  PROGRAM_ID,
-  new AnchorProvider(connection, ownerWallet, {})
-);
 
 (async () => {
   const accounts = {

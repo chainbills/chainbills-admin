@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "solana:initialize": "ts-node src/initialize-solana",
+    "solana:register-foreign-contract": "ts-node src/register-foreign-contract-solana",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
