@@ -6,8 +6,7 @@ import {
   toChainId
 } from '@wormhole-foundation/sdk';
 import 'dotenv/config';
-import { Chainbills } from './chainbills';
-import idl from './idl.json';
+import { Chainbills, IDL } from './chainbills';
 
 export const CONTRACT_ADDRESS = '0x7DEF11c120c17fBcd63d916Eefb14F9Fc395f7eA';
 export const PROGRAM_DATA = 'DJLaALNipXGqxQL947naAmEjUGwDEaHkaL1NDfLXkc6V';
@@ -23,14 +22,15 @@ export const error = (input: any): Error => {
   process.exit(1);
 };
 
-if (!process.env.SOLANA_OWNER_KEY) throw error('Set SOLANA_OWNER_KEY in .env');
+if (!process.env.EVM_OWNER_KEY) throw error('Set EVM_OWNER_KEY in .env');
+export const evmOwnerKey = process.env.EVM_OWNER_KEY;
 
-export const ownerWallet = new Wallet(
-  Keypair.fromSecretKey(
-    Uint8Array.from(JSON.parse(process.env.SOLANA_OWNER_KEY))
-  )
+if (!process.env.SOLANA_OWNER_KEY) throw error('Set SOLANA_OWNER_KEY in .env');
+const ownerKeypair = Keypair.fromSecretKey(
+  Uint8Array.from(JSON.parse(process.env.SOLANA_OWNER_KEY))
 );
-export const owner = ownerWallet.publicKey;
+export const solanaOwnerWallet = new Wallet(ownerKeypair);
+export const solanaOwner = solanaOwnerWallet.publicKey;
 
 export const connection = new Connection(clusterApiUrl('devnet'));
 export const thisProgram = new PublicKey(PROGRAM_ID);
@@ -41,9 +41,9 @@ export const config = PublicKey.findProgramAddressSync(
 )[0];
 
 export const program = new Program<Chainbills>(
-  idl as Chainbills,
+  IDL,
   PROGRAM_ID,
-  new AnchorProvider(connection, ownerWallet, {})
+  new AnchorProvider(connection, solanaOwnerWallet, {})
 );
 
 const { coreBridge, tokenBridge: solTB } = getContracts(WH_NETWORK, 'Solana');
@@ -56,5 +56,5 @@ export const solanaTokenBridge = new PublicKey(solTB);
 const { tokenBridge: sepoliaTB } = getContracts(WH_NETWORK, 'Sepolia');
 if (!sepoliaTB) throw error('Got Invalid Sepolia tokenBridge from Wormhole');
 
-export const ethereumTokenBridge = new UniversalAddress(sepoliaTB, 'hex')
+export const sepoliaTokenBridge = new UniversalAddress(sepoliaTB, 'hex')
   .address;

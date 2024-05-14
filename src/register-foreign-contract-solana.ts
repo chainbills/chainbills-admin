@@ -5,10 +5,10 @@ import {
   CONTRACT_ADDRESS,
   WH_CHAIN_ID_SEPOLIA,
   config,
-  ethereumTokenBridge,
   green,
-  owner,
   program,
+  sepoliaTokenBridge,
+  solanaOwner as owner,
   solanaTokenBridge,
   systemProgram,
   thisProgram
@@ -31,7 +31,7 @@ const foreignContract = PublicKey.findProgramAddressSync(
 const tokenBridgeForeignEndpoint = PublicKey.findProgramAddressSync(
   [
     new BN(WH_CHAIN_ID_SEPOLIA).toArrayLike(Buffer, 'be', 2),
-    ethereumTokenBridge
+    sepoliaTokenBridge
   ],
   solanaTokenBridge
 )[0];

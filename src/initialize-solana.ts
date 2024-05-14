@@ -5,7 +5,7 @@ import {
   WH_CHAIN_ID_SOLANA,
   config,
   green,
-  owner,
+  solanaOwner as owner,
   program,
   systemProgram,
   thisProgram,
