@@ -1,4 +1,9 @@
-import { AnchorProvider, Program, Wallet, web3 } from '@project-serum/anchor';
+import {
+  AnchorProvider,
+  Wallet as AnchorWallet,
+  Program,
+  web3
+} from '@project-serum/anchor';
 import { Connection, Keypair, PublicKey, clusterApiUrl } from '@solana/web3.js';
 import {
   UniversalAddress,
@@ -6,9 +11,12 @@ import {
   toChainId
 } from '@wormhole-foundation/sdk';
 import 'dotenv/config';
+import { Contract, Wallet as EvmWallet, JsonRpcProvider } from 'ethers';
+import abi from './abi';
 import { Chainbills, IDL } from './chainbills';
 
-export const CONTRACT_ADDRESS = '0x7DEF11c120c17fBcd63d916Eefb14F9Fc395f7eA';
+export const CONTRACT_ADDRESS: `0x${string}` =
+  '0x89F1051407799805eac5aE9A40240dbCaaB55b98';
 export const PROGRAM_DATA = 'DJLaALNipXGqxQL947naAmEjUGwDEaHkaL1NDfLXkc6V';
 export const PROGRAM_ID = 'p7Lu1yPzMRYLfLxWbEePx8kn3LNevFTbGVC5ghyADF9';
 export const WH_CHAIN_ID_SEPOLIA = toChainId('Sepolia');
@@ -23,13 +31,19 @@ export const error = (input: any): Error => {
 };
 
 if (!process.env.EVM_OWNER_KEY) throw error('Set EVM_OWNER_KEY in .env');
-export const evmOwnerKey = process.env.EVM_OWNER_KEY;
+export const evmOwnerKey = process.env.EVM_OWNER_KEY as `0x${string}`;
+
+export const contract = new Contract(
+  CONTRACT_ADDRESS,
+  abi,
+  new EvmWallet(evmOwnerKey, new JsonRpcProvider('https://rpc.sepolia.org'))
+);
 
 if (!process.env.SOLANA_OWNER_KEY) throw error('Set SOLANA_OWNER_KEY in .env');
 const ownerKeypair = Keypair.fromSecretKey(
   Uint8Array.from(JSON.parse(process.env.SOLANA_OWNER_KEY))
 );
-export const solanaOwnerWallet = new Wallet(ownerKeypair);
+export const solanaOwnerWallet = new AnchorWallet(ownerKeypair);
 export const solanaOwner = solanaOwnerWallet.publicKey;
 
 export const connection = new Connection(clusterApiUrl('devnet'));
