@@ -6,7 +6,8 @@
   "scripts": {
     "solana:initialize": "ts-node src/initialize-solana",
     "solana:register-foreign-contract": "ts-node src/register-foreign-contract-solana",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "solana:update-max-withdrawal-fee": "ts-node -T src/update-max-withdrawal-fee-solana"
   },
   "devDependencies": {
     "ts-node": "^10.9.2"
