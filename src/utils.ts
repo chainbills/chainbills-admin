@@ -16,7 +16,7 @@ import abi from './abi';
 import { Chainbills, IDL } from './chainbills';
 
 export const CONTRACT_ADDRESS: `0x${string}` =
-  '0x89F1051407799805eac5aE9A40240dbCaaB55b98';
+  '0xb52CB1AD5D67C5CD25180f8cdB48D22243291884';
 export const PROGRAM_DATA = 'DJLaALNipXGqxQL947naAmEjUGwDEaHkaL1NDfLXkc6V';
 export const PROGRAM_ID = 'p7Lu1yPzMRYLfLxWbEePx8kn3LNevFTbGVC5ghyADF9';
 export const WH_CHAIN_ID_SEPOLIA = toChainId('Sepolia');

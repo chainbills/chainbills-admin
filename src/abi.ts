@@ -69,11 +69,7 @@ export default [
     name: 'closePayable',
     inputs: [{ name: 'payableId', type: 'bytes32', internalType: 'bytes32' }],
     outputs: [
-      {
-        name: 'messageSequence',
-        type: 'uint64',
-        internalType: 'uint64'
-      }
+      { name: 'messageSequence', type: 'uint64', internalType: 'uint64' }
     ],
     stateMutability: 'payable'
   },
@@ -96,40 +92,20 @@ export default [
         components: [
           { name: 'actionId', type: 'uint8', internalType: 'uint8' },
           { name: 'caller', type: 'bytes32', internalType: 'bytes32' },
-          {
-            name: 'payableId',
-            type: 'bytes32',
-            internalType: 'bytes32'
-          },
+          { name: 'payableId', type: 'bytes32', internalType: 'bytes32' },
           { name: 'token', type: 'bytes32', internalType: 'bytes32' },
           { name: 'amount', type: 'uint256', internalType: 'uint256' },
-          {
-            name: 'allowsFreePayments',
-            type: 'bool',
-            internalType: 'bool'
-          },
+          { name: 'allowsFreePayments', type: 'bool', internalType: 'bool' },
           {
             name: 'tokensAndAmounts',
             type: 'tuple[]',
             internalType: 'struct CbStructs.CbTokenAndAmount[]',
             components: [
-              {
-                name: 'token',
-                type: 'bytes32',
-                internalType: 'bytes32'
-              },
-              {
-                name: 'amount',
-                type: 'uint256',
-                internalType: 'uint256'
-              }
+              { name: 'token', type: 'bytes32', internalType: 'bytes32' },
+              { name: 'amount', type: 'uint256', internalType: 'uint256' }
             ]
           },
-          {
-            name: 'description',
-            type: 'string',
-            internalType: 'string'
-          }
+          { name: 'description', type: 'string', internalType: 'string' }
         ]
       }
     ],
@@ -146,40 +122,20 @@ export default [
         components: [
           { name: 'actionId', type: 'uint8', internalType: 'uint8' },
           { name: 'caller', type: 'bytes32', internalType: 'bytes32' },
-          {
-            name: 'payableId',
-            type: 'bytes32',
-            internalType: 'bytes32'
-          },
+          { name: 'payableId', type: 'bytes32', internalType: 'bytes32' },
           { name: 'token', type: 'bytes32', internalType: 'bytes32' },
           { name: 'amount', type: 'uint256', internalType: 'uint256' },
-          {
-            name: 'allowsFreePayments',
-            type: 'bool',
-            internalType: 'bool'
-          },
+          { name: 'allowsFreePayments', type: 'bool', internalType: 'bool' },
           {
             name: 'tokensAndAmounts',
             type: 'tuple[]',
             internalType: 'struct CbStructs.CbTokenAndAmount[]',
             components: [
-              {
-                name: 'token',
-                type: 'bytes32',
-                internalType: 'bytes32'
-              },
-              {
-                name: 'amount',
-                type: 'uint256',
-                internalType: 'uint256'
-              }
+              { name: 'token', type: 'bytes32', internalType: 'bytes32' },
+              { name: 'amount', type: 'uint256', internalType: 'uint256' }
             ]
           },
-          {
-            name: 'description',
-            type: 'string',
-            internalType: 'string'
-          }
+          { name: 'description', type: 'string', internalType: 'string' }
         ]
       }
     ],
@@ -207,17 +163,9 @@ export default [
     name: 'initialize',
     inputs: [
       { name: 'wormhole_', type: 'address', internalType: 'address' },
-      {
-        name: 'tokenBridge_',
-        type: 'address',
-        internalType: 'address'
-      },
+      { name: 'tokenBridge_', type: 'address', internalType: 'address' },
       { name: 'chainId_', type: 'uint16', internalType: 'uint16' },
-      {
-        name: 'wormholeFinality_',
-        type: 'uint8',
-        internalType: 'uint8'
-      }
+      { name: 'wormholeFinality_', type: 'uint8', internalType: 'uint8' }
     ],
     outputs: [],
     stateMutability: 'payable'
@@ -227,11 +175,7 @@ export default [
     name: 'initializePayable',
     inputs: [
       { name: 'description', type: 'string', internalType: 'string' },
-      {
-        name: 'allowsFreePayments',
-        type: 'bool',
-        internalType: 'bool'
-      },
+      { name: 'allowsFreePayments', type: 'bool', internalType: 'bool' },
       {
         name: 'tokensAndAmounts',
         type: 'tuple[]',
@@ -243,11 +187,7 @@ export default [
       }
     ],
     outputs: [
-      {
-        name: 'messageSequence',
-        type: 'uint64',
-        internalType: 'uint64'
-      }
+      { name: 'messageSequence', type: 'uint64', internalType: 'uint64' }
     ],
     stateMutability: 'payable'
   },
@@ -284,11 +224,7 @@ export default [
       { name: 'amount', type: 'uint256', internalType: 'uint256' }
     ],
     outputs: [
-      {
-        name: 'messageSequence',
-        type: 'uint64',
-        internalType: 'uint64'
-      }
+      { name: 'messageSequence', type: 'uint64', internalType: 'uint64' }
     ],
     stateMutability: 'payable'
   },
@@ -296,16 +232,8 @@ export default [
     type: 'function',
     name: 'registerEmitter',
     inputs: [
-      {
-        name: 'emitterChainId',
-        type: 'uint16',
-        internalType: 'uint16'
-      },
-      {
-        name: 'emitterAddress',
-        type: 'bytes32',
-        internalType: 'bytes32'
-      }
+      { name: 'emitterChainId', type: 'uint16', internalType: 'uint16' },
+      { name: 'emitterAddress', type: 'bytes32', internalType: 'bytes32' }
     ],
     outputs: [],
     stateMutability: 'nonpayable'
@@ -322,11 +250,7 @@ export default [
     name: 'reopenPayable',
     inputs: [{ name: 'payableId', type: 'bytes32', internalType: 'bytes32' }],
     outputs: [
-      {
-        name: 'messageSequence',
-        type: 'uint64',
-        internalType: 'uint64'
-      }
+      { name: 'messageSequence', type: 'uint64', internalType: 'uint64' }
     ],
     stateMutability: 'payable'
   },
@@ -335,11 +259,7 @@ export default [
     name: 'tokenBridge',
     inputs: [],
     outputs: [
-      {
-        name: '',
-        type: 'address',
-        internalType: 'contract ITokenBridge'
-      }
+      { name: '', type: 'address', internalType: 'contract ITokenBridge' }
     ],
     stateMutability: 'view'
   },
@@ -358,11 +278,7 @@ export default [
       { name: 'description', type: 'string', internalType: 'string' }
     ],
     outputs: [
-      {
-        name: 'messageSequence',
-        type: 'uint64',
-        internalType: 'uint64'
-      }
+      { name: 'messageSequence', type: 'uint64', internalType: 'uint64' }
     ],
     stateMutability: 'payable'
   },
@@ -382,11 +298,7 @@ export default [
       { name: 'amount', type: 'uint256', internalType: 'uint256' }
     ],
     outputs: [
-      {
-        name: 'messageSequence',
-        type: 'uint64',
-        internalType: 'uint64'
-      }
+      { name: 'messageSequence', type: 'uint64', internalType: 'uint64' }
     ],
     stateMutability: 'payable'
   },
@@ -463,11 +375,7 @@ export default [
   { type: 'error', name: 'InvalidWormholeEmitterAddress', inputs: [] },
   { type: 'error', name: 'InvalidWormholeFinality', inputs: [] },
   { type: 'error', name: 'MaxPayableDescriptionReached', inputs: [] },
-  {
-    type: 'error',
-    name: 'MaxPayableTokensCapacityReached',
-    inputs: []
-  },
+  { type: 'error', name: 'MaxPayableTokensCapacityReached', inputs: [] },
   {
     type: 'error',
     name: 'NotAnEvmAddress',
@@ -501,4 +409,3 @@ export default [
   { type: 'error', name: 'TokenNotAttested', inputs: [] },
   { type: 'error', name: 'ZeroAmountSpecified', inputs: [] }
 ];
-
