@@ -4,13 +4,14 @@
   "private": true,
   "main": "lib/index.js",
   "scripts": {
-    "evm:register-foreign-contract": "ts-node -T src/register-foreign-contract-evm",
-    "solana:initialize": "ts-node -T src/initialize-solana",
-    "solana:register-foreign-contract": "ts-node -T src/register-foreign-contract-solana",
-    "solana:update-max-withdrawal-fee": "ts-node -T src/update-max-withdrawal-fee-solana",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "evm:register-foreign-contract": "ts-node -T --swc src/evm/register-foreign-contract",
+    "evm:update-max-withdrawal-fee": "ts-node -T --swc src/evm/update-max-withdrawal-fee",
+    "solana:initialize": "ts-node -T --swc src/solana/initialize",
+    "solana:register-foreign-contract": "ts-node -T --swc src/solana/register-foreign-contract",
+    "solana:update-max-withdrawal-fee": "ts-node -T --swc src/solana/update-max-withdrawal-fee"
   },
   "devDependencies": {
+    "@swc/core": "^1.7.22",
     "ts-node": "^10.9.2"
   },
   "dependencies": {
@@ -18,7 +19,8 @@
     "@solana/spl-token": "^0.4.6",
     "@solana/web3.js": "^1.91.7",
     "@wormhole-foundation/sdk": "^0.5.2",
+    "bs58": "^6.0.0",
     "dotenv": "^16.4.5",
-    "ethers": "^6.12.1"
+    "viem": "^2.21.1"
   }
 }
