@@ -8,7 +8,8 @@
     "evm:update-max-withdrawal-fee": "ts-node -T --swc src/evm/update-max-withdrawal-fee",
     "solana:initialize": "ts-node -T --swc src/solana/initialize",
     "solana:register-foreign-contract": "ts-node -T --swc src/solana/register-foreign-contract",
-    "solana:update-max-withdrawal-fee": "ts-node -T --swc src/solana/update-max-withdrawal-fee"
+    "solana:update-max-withdrawal-fee": "ts-node -T --swc src/solana/update-max-withdrawal-fee",
+    "solana:update-max-withdrawal-fee-native": "ts-node -T --swc src/solana/update-max-withdrawal-fee-native"
   },
   "devDependencies": {
     "@swc/core": "^1.7.22",
