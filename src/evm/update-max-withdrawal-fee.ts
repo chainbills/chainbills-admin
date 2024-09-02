@@ -5,8 +5,8 @@ import { green, writeContract } from './utils';
   const {
     maxWithdrawalFee,
     sepolia: { address, decimals }
-  } = tokens.ETH;
-  // } = tokens.USDC;
+  // } = tokens.ETH;
+  } = tokens.USDC;
 
   await writeContract('updateMaxWithdrawalFee', [
     address,

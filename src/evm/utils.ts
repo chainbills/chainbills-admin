@@ -15,7 +15,7 @@ const account = privateKeyToAccount(evmOwnerKey);
 const config = { chain: sepolia, transport: http('https://sepolia.drpc.org') };
 
 export const CONTRACT_ADDRESS: `0x${string}` =
-  '0x5c9c9e008e73689b37575e36c4ad654f16799bef';
+  '0x77eb76be1b283145ebc49d7d40e904b70c3b06ab';
 
 export const publicClient = createPublicClient({ ...config });
 
