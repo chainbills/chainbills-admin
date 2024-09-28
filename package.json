@@ -4,6 +4,8 @@
   "private": true,
   "main": "lib/index.js",
   "scripts": {
+    "cosmwasm:instantiate": "ts-node -T --swc src/cosmwasm/instantiate",
+    "cosmwasm:update-max-withdrawal-fee": "ts-node -T --swc src/cosmwasm/update-max-withdrawal-fee",
     "evm:register-foreign-contract": "ts-node -T --swc src/evm/register-foreign-contract",
     "evm:update-max-withdrawal-fee": "ts-node -T --swc src/evm/update-max-withdrawal-fee",
     "solana:initialize": "ts-node -T --swc src/solana/initialize",
@@ -16,6 +18,7 @@
     "ts-node": "^10.9.2"
   },
   "dependencies": {
+    "@cosmjs/stargate": "^0.32.4",
     "@project-serum/anchor": "^0.26.0",
     "@solana/spl-token": "^0.4.6",
     "@solana/web3.js": "^1.91.7",
