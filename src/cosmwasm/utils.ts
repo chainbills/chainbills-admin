@@ -17,7 +17,7 @@ const gasPrice = GasPrice.fromString('0uxion');
 export const txOptions = { gasPrice };
 
 export const CONTRACT_ADDRESS =
-  'xion1g378skyp9y28n2ud6xdpf4jgrd5nc6j7029wk8t56p044f3m6j0ql6d3v9';
+  'xion1cena9wnyd2wudh5g7zrx2wwtr46wl2g3ahaargzt3gypufqd8s5sp6xpu3';
 
 export const convertBigints = (input: any): any => {
   if (typeof input === 'bigint') return Number(input);

@@ -40,7 +40,7 @@ import {
     +cosmwasmCodeId!,
     {
       msg: {
-        chain_id: 40,
+        chain_id: 50,
         chainbills_fee_collector: cosmwasmFeeCollector
       }
     },
